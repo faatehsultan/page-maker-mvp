@@ -5,7 +5,7 @@ import GjsPresetNewsletter from 'grapesjs-preset-newsletter';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { template1, template2 } from '@/constants';
 
-const templatesMap = {
+const templatesMap:{ [key: string]: object } = {
   'template2': template1,
   'template1': template2
 }
@@ -39,7 +39,7 @@ const PageBuilder = () => {
 
     const preloadTemplate = queryParams.get('template');
     if(preloadTemplate) {
-        handleImport(templatesMap[preloadTemplate]);
+        handleImport(templatesMap[preloadTemplate] as object);
     }
   }, [editor, queryParams, handleImport]);
 
